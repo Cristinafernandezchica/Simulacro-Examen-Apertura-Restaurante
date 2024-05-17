@@ -25,6 +25,22 @@ const loadModel = (sequelize, DataTypes) => {
         return err
       }
     }
+
+    // Comprobamos si tiene orders si entregar
+    async hasUndeliveredOrders () {
+      const orders = await this.getOrders()
+      const undeliveredOrders = orders.filter(o => o.deliveredAt === null)
+      return undeliveredOrders.length > 0
+    }
+
+    // Cambiamos de online a offline y de offline a online
+    async setStatus () {
+      if (this.status === 'closed' || this.status === 'temporarily closed' || this.status === null || await this.hasUndeliveredOrders()) {
+        throw new Error('Cannot change status')
+      }
+      this.status = this.status === 'online' ? 'offline' : 'online'
+      await this.save()
+    }
   }
   Restaurant.init({
     name: {

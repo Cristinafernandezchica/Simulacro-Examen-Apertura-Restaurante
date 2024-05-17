@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { StyleSheet, FlatList, Pressable, View } from 'react-native'
 
-import { getAll, remove } from '../../api/RestaurantEndpoints'
+import { getAll, remove, updateStatus } from '../../api/RestaurantEndpoints'
 import ImageCard from '../../components/ImageCard'
 import TextSemiBold from '../../components/TextSemibold'
 import TextRegular from '../../components/TextRegular'
@@ -39,6 +39,7 @@ export default function RestaurantsScreen ({ navigation, route }) {
         {item.averageServiceMinutes !== null &&
           <TextSemiBold>Avg. service time: <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{item.averageServiceMinutes} min.</TextSemiBold></TextSemiBold>
         }
+        <TextSemiBold>This restaurant is <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{item.status}</TextSemiBold></TextSemiBold>
         <TextSemiBold>Shipping: <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{item.shippingCosts.toFixed(2)}€</TextSemiBold></TextSemiBold>
         <View style={styles.actionButtonsContainer}>
           <Pressable
@@ -77,9 +78,36 @@ export default function RestaurantsScreen ({ navigation, route }) {
             </TextRegular>
           </View>
         </Pressable>
+
+        {item.status !== null && item.status !== 'closed' && item.status !== 'temporarily closed' &&
+        <Pressable
+        onPress={() => { setOnlineOffline(item) }}
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed
+              ? GlobalStyles.brandSuccessTap
+              : GlobalStyles.brandSuccess
+          },
+          styles.actionButton
+        ]}>
+          <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'center' }]}>
+            <MaterialCommunityIcons name='sync' color={'white'} size={20}/>
+            <TextRegular textStyle={styles.text}>
+              {item.status === 'online' ? 'offline' : 'online'}
+            </TextRegular>
+          </View>
+        </Pressable>
+    }
+
         </View>
       </ImageCard>
     )
+  }
+
+  // Cambiar el estado del restaurante de online a offline o viceversa
+  const setOnlineOffline = async (item) => {
+    await updateStatus(item.id, item)
+    fetchRestaurants()
   }
 
   const renderEmptyRestaurantsList = () => {
@@ -195,7 +223,7 @@ const styles = StyleSheet.create({
     padding: 10,
     alignSelf: 'center',
     flexDirection: 'column',
-    width: '50%'
+    width: '33%'
   },
   actionButtonsContainer: {
     flexDirection: 'row',

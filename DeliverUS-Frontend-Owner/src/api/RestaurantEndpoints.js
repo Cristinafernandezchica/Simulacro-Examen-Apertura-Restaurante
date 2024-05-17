@@ -19,8 +19,12 @@ function update (id, data) {
   return put(`restaurants/${id}`, data)
 }
 
+function updateStatus (id, data) {
+  return put(`restaurants/${id}/status`, data)
+}
+
 function remove (id) {
   return destroy(`restaurants/${id}`)
 }
 
-export { getAll, getDetail, getRestaurantCategories, create, update, remove }
+export { getAll, getDetail, getRestaurantCategories, create, update, updateStatus, remove }

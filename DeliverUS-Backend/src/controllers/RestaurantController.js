@@ -28,7 +28,8 @@ const indexOwner = async function (req, res) {
         include: [{
           model: RestaurantCategory,
           as: 'restaurantCategory'
-        }]
+        }],
+        order: [['status', 'ASC'], ['name', 'ASC']]
       })
     res.json(restaurants)
   } catch (err) {
@@ -80,6 +81,17 @@ const update = async function (req, res) {
   }
 }
 
+// Creamos un update para actualizar solo el estado del restaurante
+const updateStatus = async function (req, res) {
+  try {
+    const restaurant = await Restaurant.findByPk(req.params.restaurantId)
+    await restaurant.setStatus()
+    res.json(restaurant)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+}
+
 const destroy = async function (req, res) {
   try {
     const result = await Restaurant.destroy({ where: { id: req.params.restaurantId } })
@@ -101,6 +113,7 @@ const RestaurantController = {
   create,
   show,
   update,
+  updateStatus,
   destroy
 }
 export default RestaurantController
