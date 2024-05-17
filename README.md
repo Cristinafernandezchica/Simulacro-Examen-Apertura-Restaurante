@@ -27,13 +27,6 @@ Realice todos los cambios necesarios en el proyecto de frontend para implementar
 
 ![image](https://github.com/Cristinafernandezchica/Simulacro-Examen-Apertura-Restaurante/assets/114416600/a6c90ded-3140-4aa1-b4d8-fc59552d09f5)
 
-
-![captura1](https://user-images.githubusercontent.com/19324988/235651836-d57d9c7e-4b8d-46a2-9154-b414a7abf702.png)
-
-![captura2](https://user-images.githubusercontent.com/19324988/235651849-4d03c7d9-f332-4952-8cbc-9fa5db4f97fb.png)
-
-![captura3](https://user-images.githubusercontent.com/19324988/235651853-e1d13916-4f47-4e17-97e0-5696b647bee7.png)
-
 ## Introducción
 
 Este repositorio incluye el backend completo (carpeta `DeliverUS-Backend`) y el frontend de `owner` (carpeta `DeliverUS-Frontend-Owner`). Servirá como base para realizar el examen de laboratorio de la asignatura.
