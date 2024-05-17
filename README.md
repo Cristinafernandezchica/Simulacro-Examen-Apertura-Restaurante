@@ -23,6 +23,10 @@ Realice todos los cambios necesarios en el proyecto de backend para implementar 
 ### Ejercicio 2
 
 Realice todos los cambios necesarios en el proyecto de frontend para implementar el nuevo requisito.
+![image](https://github.com/Cristinafernandezchica/Simulacro-Examen-Apertura-Restaurante/assets/114416600/639f956b-613c-4102-a298-56f03ea707a3)
+
+![image](https://github.com/Cristinafernandezchica/Simulacro-Examen-Apertura-Restaurante/assets/114416600/a6c90ded-3140-4aa1-b4d8-fc59552d09f5)
+
 
 ![captura1](https://user-images.githubusercontent.com/19324988/235651836-d57d9c7e-4b8d-46a2-9154-b414a7abf702.png)
 
