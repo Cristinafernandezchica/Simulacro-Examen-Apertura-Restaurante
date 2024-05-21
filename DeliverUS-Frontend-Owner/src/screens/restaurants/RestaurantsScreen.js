@@ -53,13 +53,13 @@ export default function RestaurantsScreen ({ navigation, route }) {
               },
               styles.actionButton
             ]}>
-          <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'center' }]}>
-            <MaterialCommunityIcons name='pencil' color={'white'} size={20}/>
-            <TextRegular textStyle={styles.text}>
-              Edit
-            </TextRegular>
-          </View>
-        </Pressable>
+            <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'center' }]}>
+              <MaterialCommunityIcons name='pencil' color={'white'} size={20}/>
+              <TextRegular textStyle={styles.text}>
+                Edit
+              </TextRegular>
+            </View>
+          </Pressable>
 
         <Pressable
             onPress={() => { setRestaurantToBeDeleted(item) }}
@@ -81,15 +81,15 @@ export default function RestaurantsScreen ({ navigation, route }) {
 
         {item.status !== null && item.status !== 'closed' && item.status !== 'temporarily closed' &&
         <Pressable
-        onPress={() => { setOnlineOffline(item) }}
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed
-              ? GlobalStyles.brandSuccessTap
-              : GlobalStyles.brandSuccess
-          },
-          styles.actionButton
-        ]}>
+          onPress={() => { setOnlineOffline(item) }}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed
+                ? GlobalStyles.brandSuccessTap
+                : GlobalStyles.brandSuccess
+            },
+            styles.actionButton
+          ]}>
           <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'center' }]}>
             <MaterialCommunityIcons name='sync' color={'white'} size={20}/>
             <TextRegular textStyle={styles.text}>

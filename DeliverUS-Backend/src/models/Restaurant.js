@@ -26,7 +26,7 @@ const loadModel = (sequelize, DataTypes) => {
       }
     }
 
-    // Comprobamos si tiene orders si entregar
+    // Comprobamos si tiene orders sin entregar
     async hasUndeliveredOrders () {
       const orders = await this.getOrders()
       const undeliveredOrders = orders.filter(o => o.deliveredAt === null)
